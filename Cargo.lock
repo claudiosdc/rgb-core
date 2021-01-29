@@ -240,6 +240,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "descriptor-wallet"
+version = "0.3.5"
+source = "git+https://github.com/claudiosdc/descriptor-wallet.git?branch=v0.3.5_descriptor_fix#d09a97c0182d62e121468686d52bd6741796704a"
+dependencies = [
+ "amplify",
+ "amplify_derive",
+ "bitcoin",
+ "lazy_static",
+ "lightning_encoding",
+ "miniscript",
+ "regex",
+ "strict_encoding",
+]
+
+[[package]]
 name = "digest"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -387,6 +402,31 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "89203f3fba0a3795506acaad8ebce3c80c0af93f994d5a1d7a0b1eeb23271929"
 
 [[package]]
+name = "lightning_encoding"
+version = "0.3.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bff5b60ba947fb0194cb076a29968418d7b70af01781eb9973371a0efe6d3871"
+dependencies = [
+ "amplify",
+ "amplify_derive",
+ "bitcoin",
+ "lightning_encoding_derive",
+ "strict_encoding",
+]
+
+[[package]]
+name = "lightning_encoding_derive"
+version = "0.3.12"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f9c4b7e9c19325a2f965023c96621c4f6c921ec6d05433911e1a640bf71eff40"
+dependencies = [
+ "amplify",
+ "proc-macro2 1.0.24",
+ "quote 1.0.8",
+ "syn 1.0.58",
+]
+
+[[package]]
 name = "linked-hash-map"
 version = "0.5.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -403,7 +443,7 @@ dependencies = [
  "bitcoin",
  "bitcoin_hashes",
  "client_side_validation",
- "descriptor-wallet",
+ "descriptor-wallet 0.3.0",
  "lazy_static",
  "miniscript",
  "serde",
@@ -735,7 +775,7 @@ dependencies = [
  "bitcoin_hashes",
  "chrono",
  "deflate",
- "descriptor-wallet",
+ "descriptor-wallet 0.3.5",
  "ed25519-dalek",
  "grin_secp256k1zkp",
  "inflate",
