@@ -21,7 +21,7 @@ crate-type = ["rlib", "staticlib"]
 amplify = "3"
 amplify_derive = "2.4.3"
 lnpbp = "0.3"
-rgb-core = { version = "0.3.0-beta.3", path = ".." }
+rgb-core = { path = ".." }
 bitcoin = "0.26"
 serde_crate = { package = "serde", version = "~1.0.106", features = ["derive"], optional = true }
 serde_with = { version = "~1.5.1", features = ["hex"], optional = true }
