@@ -224,23 +224,6 @@ dependencies = [
 
 [[package]]
 name = "descriptor-wallet"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "be824a9c51233ac02952d1557b76fe706231ae09209325a78128864db2b8c31b"
-dependencies = [
- "amplify",
- "amplify_derive",
- "bitcoin",
- "lazy_static",
- "miniscript",
- "regex",
- "serde",
- "serde_with",
- "strict_encoding",
-]
-
-[[package]]
-name = "descriptor-wallet"
 version = "0.3.5"
 source = "git+https://github.com/claudiosdc/descriptor-wallet.git?branch=v0.3.5_descriptor_fix#d09a97c0182d62e121468686d52bd6741796704a"
 dependencies = [
@@ -251,6 +234,8 @@ dependencies = [
  "lightning_encoding",
  "miniscript",
  "regex",
+ "serde",
+ "serde_with",
  "strict_encoding",
 ]
 
@@ -435,15 +420,14 @@ checksum = "7fb9b38af92608140b86b693604b9ffcc5824240a484d1ecd4795bacb2fe88f3"
 [[package]]
 name = "lnpbp"
 version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2918519f7b03b2ae360e03ce944f2f13d315a26fa0eb01cc6fb68cad3dc88768"
+source = "git+https://github.com/claudiosdc/rust-lnpbp.git?branch=v0.3.0_desc_wallet_fix#acb2dd6c52efad095d13b2a9817083c007d53d87"
 dependencies = [
  "amplify",
  "amplify_derive",
  "bitcoin",
  "bitcoin_hashes",
  "client_side_validation",
- "descriptor-wallet 0.3.0",
+ "descriptor-wallet",
  "lazy_static",
  "miniscript",
  "serde",
@@ -775,7 +759,7 @@ dependencies = [
  "bitcoin_hashes",
  "chrono",
  "deflate",
- "descriptor-wallet 0.3.5",
+ "descriptor-wallet",
  "ed25519-dalek",
  "grin_secp256k1zkp",
  "inflate",
