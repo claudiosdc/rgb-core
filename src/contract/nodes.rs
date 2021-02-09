@@ -462,7 +462,12 @@ impl Node for Transition {
 
     #[inline]
     fn node_id(&self) -> NodeId {
-        self.clone().consensus_commit()
+        let mut transition = self.clone();
+
+        // Make sure that transition has all its assignments concealed before
+        //  computing its node ID to avoid node ID mutability
+        transition.conceal_all();
+        transition.consensus_commit()
     }
 
     #[inline]
