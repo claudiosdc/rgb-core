@@ -703,6 +703,34 @@ where
     }
 }
 
+impl<STATE> OwnedState<STATE>
+where
+    Self: Clone,
+    STATE: StateTypes,
+    STATE::Confidential: PartialEq + Eq,
+    STATE::Confidential: From<<STATE::Revealed as Conceal>::Confidential>,
+{
+    pub fn conceal_seal(&self) -> Self {
+        match self {
+            OwnedState::Revealed {
+                seal_definition,
+                assigned_state,
+            } => Self::ConfidentialSeal {
+                seal_definition: seal_definition.conceal(),
+                assigned_state: assigned_state.clone(),
+            },
+            OwnedState::ConfidentialAmount {
+                seal_definition,
+                assigned_state,
+            } => Self::Confidential {
+                seal_definition: seal_definition.conceal(),
+                assigned_state: assigned_state.clone(),
+            },
+            _ => self.clone(),
+        }
+    }
+}
+
 impl<STATE> Conceal for OwnedState<STATE>
 where
     Self: Clone,
@@ -731,6 +759,7 @@ where
                 assigned_state: assigned_state.conceal().into(),
             },
         }
+        .conceal_seal()
     }
 }
 
