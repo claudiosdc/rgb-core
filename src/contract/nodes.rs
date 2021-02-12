@@ -620,6 +620,7 @@ mod _strict_encoding {
             len += self.metadata.commit_encode(&mut e);
             len += self.parent_owned_rights.commit_encode(&mut e);
             len += self.public_rights.commit_encode(&mut e);
+            len += self.owned_rights.commit_encode(&mut e);
             len += self.script.commit_encode(&mut e);
             len
         }
