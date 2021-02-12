@@ -274,10 +274,6 @@ impl CommitEncodeWithStrategy for Extension {
     type Strategy = commit_strategy::UsingStrict;
 }
 
-impl CommitEncodeWithStrategy for Transition {
-    type Strategy = commit_strategy::UsingStrict;
-}
-
 impl AutoConceal for Genesis {
     fn conceal_except(&mut self, seals: &Vec<seal::Confidential>) -> usize {
         let mut count = 0;
@@ -616,6 +612,18 @@ mod _strict_encoding {
 
     impl Strategy for ContractId {
         type Strategy = strategies::Wrapped;
+    }
+
+    impl CommitEncode for Transition {
+        fn commit_encode<E: io::Write>(self, mut e: E) -> usize {
+            let mut len = self.transition_type.commit_encode(&mut e);
+            len += self.metadata.commit_encode(&mut e);
+            len += self.parent_owned_rights.commit_encode(&mut e);
+            len += self.public_rights.commit_encode(&mut e);
+            len += self.owned_rights.commit_encode(&mut e);
+            len += self.script.commit_encode(&mut e);
+            len
+        }
     }
 
     // ![CONSENSUS-CRITICAL]: Commit encode is different for genesis from strict
