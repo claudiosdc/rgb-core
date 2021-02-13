@@ -149,7 +149,8 @@ dependencies = [
 [[package]]
 name = "client_side_validation"
 version = "0.3.0"
-source = "git+https://github.com/claudiosdc/rust-lnpbp.git?branch=cl_sd_val_improv#3e59f556690743b3a4b5a44a1cb4ec6434c65626"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bdfd8dba1ad3d1958eac41d2675f6802606917e61daa312ea5b68fd2f075e934"
 dependencies = [
  "amplify",
  "amplify_derive",
@@ -241,7 +242,7 @@ dependencies = [
  "bitcoin",
  "chrono",
  "lazy_static",
- "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/LNP-BP/lnp-core)",
+ "lightning_encoding",
  "miniscript",
  "regex",
  "serde",
@@ -400,18 +401,6 @@ checksum = "b7282d924be3275cec7f6756ff4121987bc6481325397dde6ba3e7802b1a8b1c"
 [[package]]
 name = "lightning_encoding"
 version = "0.4.0-alpha.2+1"
-source = "git+https://github.com/claudiosdc/lnp-core.git?branch=cl_sd_val_improv#c5ebba9f2161c55d33a8716ec66a7cbdbc3eff07"
-dependencies = [
- "amplify",
- "amplify_derive",
- "bitcoin",
- "lightning_encoding_derive",
- "strict_encoding",
-]
-
-[[package]]
-name = "lightning_encoding"
-version = "0.4.0-alpha.2+1"
 source = "git+https://github.com/LNP-BP/lnp-core#fccc440e414da819db6171e9726f90453339ec5b"
 dependencies = [
  "amplify",
@@ -442,7 +431,7 @@ checksum = "7fb9b38af92608140b86b693604b9ffcc5824240a484d1ecd4795bacb2fe88f3"
 [[package]]
 name = "lnpbp"
 version = "0.4.0-beta"
-source = "git+https://github.com/claudiosdc/rust-lnpbp.git?branch=cl_sd_val_improv#3e59f556690743b3a4b5a44a1cb4ec6434c65626"
+source = "git+https://github.com/LNP-BP/rust-lnpbp#0a82fc451af5df02dfd2c76b1c15a6ccf496fdd0"
 dependencies = [
  "amplify",
  "amplify_derive",
@@ -454,7 +443,7 @@ dependencies = [
  "descriptor-wallet",
  "inflate",
  "lazy_static",
- "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/claudiosdc/lnp-core.git?branch=cl_sd_val_improv)",
+ "lightning_encoding",
  "miniscript",
  "serde",
  "serde_with",
@@ -796,7 +785,7 @@ dependencies = [
  "grin_secp256k1zkp",
  "inflate",
  "lazy_static",
- "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/LNP-BP/lnp-core)",
+ "lightning_encoding",
  "lnpbp",
  "miniscript",
  "num-derive",
