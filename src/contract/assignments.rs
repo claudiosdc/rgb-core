@@ -18,7 +18,7 @@ use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::io;
 
 use lnpbp::client_side_validation::{
-    Conceal, CommitEncode,
+    commit_strategy, Conceal, CommitEncode,
 };
 use lnpbp::seals::OutpointReveal;
 use lnpbp::strict_encoding::{StrictDecode, StrictEncode};
@@ -397,38 +397,15 @@ impl AutoConceal for Assignments {
 
 impl CommitEncode for Assignments {
     fn commit_encode<E: io::Write>(self, e: E) -> usize {
-        fn vector_commit_encode<T, E>(v: Vec<T>, e: E) -> usize
-        where
-            T: CommitEncode,
-            E: io::Write,
-        {
-            use lnpbp::client_side_validation::{merklize, MerkleNode};
-            use crate::bitcoin_hashes::Hash;
-
-            merklize(
-                "",
-                &v
-                .into_iter()
-                .map(|item| {
-                    let mut encoder = io::Cursor::new(vec![]);
-                    item.commit_encode(&mut encoder);
-                    MerkleNode::hash(&encoder.into_inner())
-                })
-                .collect::<Vec<MerkleNode>>(),
-                0,
-            )
-            .commit_encode(e)
-        }
-
         match self {
             Assignments::Declarative(tree) => {
-                vector_commit_encode(tree, e)
+                tree.commit_encode(e)
             }
             Assignments::DiscreteFiniteField(tree) => {
-                vector_commit_encode(tree, e)
+                tree.commit_encode(e)
             }
             Assignments::CustomData(tree) => {
-                vector_commit_encode(tree, e)
+                tree.commit_encode(e)
             }
         }
     }
@@ -874,6 +851,13 @@ where
         }
     }
 }
+
+impl<STATE> commit_strategy::VectorCommitEncode for OwnedState<STATE>
+    where
+        STATE: StateTypes,
+        STATE::Confidential: PartialEq + Eq,
+        STATE::Confidential: From<<STATE::Revealed as Conceal>::Confidential>,
+{}
 
 mod _strict_encoding {
     use super::*;

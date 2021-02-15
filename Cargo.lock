@@ -160,6 +160,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "client_side_validation"
+version = "0.3.0"
+source = "git+https://github.com/claudiosdc/rust-lnpbp.git?branch=cl_sd_val_improv#3e59f556690743b3a4b5a44a1cb4ec6434c65626"
+dependencies = [
+ "amplify",
+ "amplify_derive",
+ "bitcoin_hashes",
+ "grin_secp256k1zkp",
+ "strict_encoding",
+]
+
+[[package]]
 name = "cloudabi"
 version = "0.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -241,7 +253,7 @@ dependencies = [
  "amplify_derive",
  "bitcoin",
  "lazy_static",
- "lightning_encoding",
+ "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/LNP-BP/lnp-core)",
  "miniscript",
  "regex",
  "serde",
@@ -400,6 +412,18 @@ checksum = "7ccac4b00700875e6a07c6cde370d44d32fa01c5a65cdd2fca6858c479d28bb3"
 [[package]]
 name = "lightning_encoding"
 version = "0.4.0-alpha.2+1"
+source = "git+https://github.com/claudiosdc/lnp-core.git?branch=cl_sd_val_improv#c5ebba9f2161c55d33a8716ec66a7cbdbc3eff07"
+dependencies = [
+ "amplify",
+ "amplify_derive",
+ "bitcoin",
+ "lightning_encoding_derive",
+ "strict_encoding",
+]
+
+[[package]]
+name = "lightning_encoding"
+version = "0.4.0-alpha.2+1"
 source = "git+https://github.com/LNP-BP/lnp-core#7ae83f49c3e310a147e5e4fc52fc73d10daf54d3"
 dependencies = [
  "amplify",
@@ -437,12 +461,36 @@ dependencies = [
  "bech32",
  "bitcoin",
  "bitcoin_hashes",
- "client_side_validation",
+ "client_side_validation 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "deflate",
  "descriptor-wallet",
  "inflate",
  "lazy_static",
- "lightning_encoding",
+ "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/LNP-BP/lnp-core)",
+ "miniscript",
+ "serde",
+ "serde_with",
+ "serde_with_macros",
+ "strict_encoding",
+ "strict_encoding_derive",
+]
+
+[[package]]
+name = "lnpbp"
+version = "0.4.0-beta"
+source = "git+https://github.com/claudiosdc/rust-lnpbp.git?branch=cl_sd_val_improv#3e59f556690743b3a4b5a44a1cb4ec6434c65626"
+dependencies = [
+ "amplify",
+ "amplify_derive",
+ "bech32",
+ "bitcoin",
+ "bitcoin_hashes",
+ "client_side_validation 0.3.0 (git+https://github.com/claudiosdc/rust-lnpbp.git?branch=cl_sd_val_improv)",
+ "deflate",
+ "descriptor-wallet",
+ "inflate",
+ "lazy_static",
+ "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/claudiosdc/lnp-core.git?branch=cl_sd_val_improv)",
  "miniscript",
  "serde",
  "serde_with",
@@ -784,8 +832,8 @@ dependencies = [
  "grin_secp256k1zkp",
  "inflate",
  "lazy_static",
- "lightning_encoding",
- "lnpbp",
+ "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/LNP-BP/lnp-core)",
+ "lnpbp 0.4.0-beta",
  "miniscript",
  "num-derive",
  "num-traits",
@@ -814,8 +862,8 @@ dependencies = [
  "grin_secp256k1zkp",
  "inflate",
  "lazy_static",
- "lightning_encoding",
- "lnpbp",
+ "lightning_encoding 0.4.0-alpha.2+1 (git+https://github.com/LNP-BP/lnp-core)",
+ "lnpbp 0.4.0-alpha.1",
  "miniscript",
  "num-derive",
  "num-traits",
@@ -834,7 +882,7 @@ dependencies = [
  "amplify_derive",
  "bitcoin",
  "chrono",
- "lnpbp",
+ "lnpbp 0.4.0-beta",
  "regex",
  "rgb-core 0.4.0-beta (git+https://github.com/rgb-org/rgb-core)",
  "serde",
@@ -850,7 +898,7 @@ dependencies = [
  "amplify_derive",
  "bitcoin",
  "chrono",
- "lnpbp",
+ "lnpbp 0.4.0-beta",
  "rgb-core 0.4.0-beta (git+https://github.com/rgb-org/rgb-core)",
  "serde",
  "serde_with",
@@ -864,7 +912,7 @@ dependencies = [
  "amplify_derive",
  "bitcoin",
  "chrono",
- "lnpbp",
+ "lnpbp 0.4.0-beta",
  "rgb-core 0.4.0-beta (git+https://github.com/rgb-org/rgb-core)",
  "serde",
  "serde_with",
@@ -878,7 +926,7 @@ dependencies = [
  "amplify_derive",
  "bitcoin",
  "chrono",
- "lnpbp",
+ "lnpbp 0.4.0-beta",
  "rgb-core 0.4.0-beta (git+https://github.com/rgb-org/rgb-core)",
  "serde",
  "serde_with",
