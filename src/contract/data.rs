@@ -48,9 +48,9 @@ impl Conceal for Void {
         self.clone()
     }
 }
-impl CommitEncodeWithStrategy for Void {
+/*impl CommitEncodeWithStrategy for Void {
     type Strategy = commit_strategy::UsingConceal;
-}
+}*/
 
 #[derive(Clone, Debug, Display, AsAny)]
 #[cfg_attr(
